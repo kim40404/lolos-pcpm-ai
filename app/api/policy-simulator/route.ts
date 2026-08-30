@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '../auth/[...nextauth]/route';
 import prisma from '@/lib/prisma';
 import { HfInference } from '@huggingface/inference';
+import { ratelimit } from '@/lib/ratelimit';
 
 const hf = new HfInference(process.env.HUGGINGFACE_API_KEY);
 
@@ -14,6 +15,19 @@ export async function POST(req: Request) {
     }
 
     const userId = (session.user as any).id;
+
+    // --- RATE LIMITING CHECK ---
+    if (ratelimit) {
+      const { success } = await ratelimit.limit(userId);
+      if (!success) {
+        return NextResponse.json(
+          { error: 'Terlalu banyak permintaan (Spam terdeteksi). Mohon tunggu sekitar 1 menit sebelum mencoba lagi.' }, 
+          { status: 429 }
+        );
+      }
+    }
+    // ---------------------------
+
     const { action, scenario, decision } = await req.json();
 
     // Check token quota
