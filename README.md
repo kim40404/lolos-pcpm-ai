@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LolosPCPM: Platform Edukasi & Simulasi PCPM Independen
 
-## Getting Started
+LolosPCPM adalah platform edukasi interaktif berbasis kecerdasan buatan (AI) yang dirancang secara mandiri untuk membantu para kandidat mempersiapkan diri menghadapi seleksi Pendidikan Calon Pegawai Muda (PCPM) Bank Indonesia. 
 
-First, run the development server:
+Platform ini menggabungkan analisis performa real-time, simulasi wawancara adaptif, dan studi kasus kebijakan makroekonomi dalam satu ekosistem berbasis data.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+> **Disclaimer Hukum**: LolosPCPM adalah platform edukasi independen. Kami SAMA SEKALI TIDAK berafiliasi, disponsori, atau bekerja sama dengan Bank Indonesia (BI) maupun panitia penyelenggara resmi. Seluruh materi merupakan hasil sintesis AI berdasarkan pedoman publik dan tidak menggunakan data internal/rahasia.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Arsitektur Teknis
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Sistem ini dibangun menggunakan *stack* teknologi modern untuk menjamin skalabilitas, keamanan, dan performa tinggi:
 
-## Learn More
+- **Framework**: Next.js 14+ (App Router)
+- **Bahasa Pemrograman**: TypeScript
+- **Database**: PostgreSQL (Di-hosting via Supabase)
+- **ORM**: Prisma
+- **Autentikasi**: NextAuth.js (Session & Credentials)
+- **Kecerdasan Buatan**: Vercel AI SDK terintegrasi dengan HuggingFace Inference API (Qwen/Llama Models)
+- **Styling**: Tailwind CSS & Glassmorphism UI Components
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Fitur Utama
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **AI Policy Simulator**
+   Menguji kemampuan analitik makroekonomi pengguna dengan memberikan skenario ekonomi fiktif yang *real-time*. AI akan mengevaluasi keputusan pengguna (misalnya menaikkan suku bunga saat inflasi) berdasarkan literatur resmi perbankan sentral.
 
-## Deploy on Vercel
+2. **AI Interview Coach**
+   Simulasi wawancara panel (Behavioral Event Interview & Studi Kasus) di mana AI berperan sebagai direktur penilai yang tajam, kritis, dan adaptif terhadap respons pengguna.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Dashboard Analitik Presisi**
+   Melacak *pace* (kecepatan per soal) dan akurasi pengguna dalam menjawab Tryout Potensi Dasar (TPD), mengidentifikasi kelemahan secara otomatis.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. **Sistem Token & Kuota AI**
+   Terintegrasi langsung ke dalam skema *database*, mengontrol penggunaan *inference* AI harian pengguna guna menekan beban *server*.
+
+---
+
+## Petunjuk Instalasi (Local Development)
+
+Untuk menjalankan proyek ini secara lokal, pastikan Anda telah memasang **Node.js (v18+)** dan memiliki akses ke akun **Supabase** serta **Hugging Face**.
+
+1. **Kloning Repositori**
+   ```bash
+   git clone https://github.com/kim40404/lolos-pcpm-ai.git
+   cd lolos-pcpm-ai
+   ```
+
+2. **Instalasi Dependensi**
+   ```bash
+   npm install
+   ```
+
+3. **Pengaturan Environment Variables**
+   Buat file `.env` di *root directory* dan isi dengan konfigurasi berikut:
+   ```env
+   DATABASE_URL="postgres://[USER]:[PASSWORD]@[HOST]:5432/postgres"
+   DIRECT_URL="postgres://[USER]:[PASSWORD]@[HOST]:5432/postgres"
+   NEXTAUTH_SECRET="random_string_panjang_untuk_enkripsi"
+   NEXTAUTH_URL="http://localhost:3000"
+   HUGGINGFACE_API_KEY="hf_xxxxxxxxxxxxxxxxxxx"
+   ```
+
+4. **Migrasi Database**
+   Sinkronkan skema Prisma dengan database PostgreSQL Anda:
+   ```bash
+   npx prisma db push
+   ```
+
+5. **Jalankan Server**
+   ```bash
+   npm run dev
+   ```
+   Aplikasi akan berjalan di `http://localhost:3000`.
+
+---
+
+## Hak Cipta & Lisensi
+Penggunaan kode sumber ini ditujukan eksklusif untuk operasional platform LolosPCPM. Dilarang keras melakukan duplikasi, distribusi ulang, atau komersialisasi *source code* tanpa izin dari pengembang utama.
