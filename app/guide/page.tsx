@@ -9,7 +9,7 @@ export default function GuidePage() {
   return (
     <main className="container" style={{ padding: 'var(--sp-2xl) 0', minHeight: 'calc(100vh - 72px)' }}>
       
-      <div className="flex-between" style={{ marginBottom: 'var(--sp-xl)' }}>
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
         <div>
           <h1 className="text-gradient">Panduan Strategi TPD</h1>
           <p style={{ color: 'var(--c-slate-800)', opacity: 0.8 }}>Cheat sheet dan rahasia menaklukkan PCPM BI 41.</p>
@@ -19,7 +19,7 @@ export default function GuidePage() {
         </Link>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '250px 1fr', gap: 'var(--sp-xl)', alignItems: 'start' }}>
+      <div className="grid grid-cols-1 md:grid-cols-[250px_1fr] gap-6 md:gap-8 items-start">
         
         {/* Sidebar Nav */}
         <div className="glass-card" style={{ padding: 'var(--sp-md)', display: 'flex', flexDirection: 'column', gap: '8px' }}>
