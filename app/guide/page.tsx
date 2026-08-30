@@ -31,28 +31,34 @@ export default function GuidePage() {
             📖 Strategi Verbal
           </button>
           <button 
-            onClick={() => setActiveTab('numerikal')}
-            className={`btn ${activeTab === 'numerikal' ? 'btn-primary' : 'btn-outline'}`}
-            style={{ width: '100%', justifyContent: 'flex-start', border: activeTab === 'numerikal' ? 'none' : '1px solid transparent', background: activeTab !== 'numerikal' ? 'transparent' : '' }}
+            className="btn btn-outline"
+            style={{ width: '100%', justifyContent: 'flex-start', border: '1px solid transparent', background: 'transparent', position: 'relative', overflow: 'hidden', cursor: 'not-allowed' }}
+            disabled
           >
-            🔢 Strategi Numerikal
-            <span style={{ fontSize: '0.6rem', background: 'var(--c-gold-500)', padding: '2px 6px', borderRadius: '4px', marginLeft: 'auto', color: 'var(--c-navy-900)' }}>PRO</span>
+            <span style={{ filter: 'blur(4px)', opacity: 0.6, userSelect: 'none' }}>🔢 Strategi Numerikal</span>
+            <span style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', color: 'var(--c-slate-500)' }}>
+              🔒 Terkunci
+            </span>
           </button>
           <button 
-            onClick={() => setActiveTab('digitsimbol')}
-            className={`btn ${activeTab === 'digitsimbol' ? 'btn-primary' : 'btn-outline'}`}
-            style={{ width: '100%', justifyContent: 'flex-start', border: activeTab === 'digitsimbol' ? 'none' : '1px solid transparent', background: activeTab !== 'digitsimbol' ? 'transparent' : '' }}
+            className="btn btn-outline"
+            style={{ width: '100%', justifyContent: 'flex-start', border: '1px solid transparent', background: 'transparent', position: 'relative', overflow: 'hidden', cursor: 'not-allowed' }}
+            disabled
           >
-            🔣 Strategi Digit Simbol
-            <span style={{ fontSize: '0.6rem', background: 'var(--c-gold-500)', padding: '2px 6px', borderRadius: '4px', marginLeft: 'auto', color: 'var(--c-navy-900)' }}>PRO</span>
+            <span style={{ filter: 'blur(4px)', opacity: 0.6, userSelect: 'none' }}>🔣 Strategi Digit Simbol</span>
+            <span style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', color: 'var(--c-slate-500)' }}>
+              🔒 Terkunci
+            </span>
           </button>
           <button 
-            onClick={() => setActiveTab('diagram')}
-            className={`btn ${activeTab === 'diagram' ? 'btn-primary' : 'btn-outline'}`}
-            style={{ width: '100%', justifyContent: 'flex-start', border: activeTab === 'diagram' ? 'none' : '1px solid transparent', background: activeTab !== 'diagram' ? 'transparent' : '' }}
+            className="btn btn-outline"
+            style={{ width: '100%', justifyContent: 'flex-start', border: '1px solid transparent', background: 'transparent', position: 'relative', overflow: 'hidden', cursor: 'not-allowed' }}
+            disabled
           >
-            🔷 Strategi Diagram
-            <span style={{ fontSize: '0.6rem', background: 'var(--c-gold-500)', padding: '2px 6px', borderRadius: '4px', marginLeft: 'auto', color: 'var(--c-navy-900)' }}>PRO</span>
+            <span style={{ filter: 'blur(4px)', opacity: 0.6, userSelect: 'none' }}>🔷 Strategi Diagram</span>
+            <span style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', color: 'var(--c-slate-500)' }}>
+              🔒 Terkunci
+            </span>
           </button>
         </div>
 
@@ -60,7 +66,7 @@ export default function GuidePage() {
         <div className="glass-card animate-fade-in" style={{ padding: 'var(--sp-2xl)' }}>
           
           {activeTab === 'verbal' && (
-            <div className="prose">
+            <div className="prose" style={{ position: 'relative' }}>
               <h2 style={{ marginBottom: 'var(--sp-md)' }}>📖 Cheat Sheet: Tes Verbal PCPM BI 41</h2>
               <p style={{ marginBottom: 'var(--sp-lg)', fontSize: '1.125rem', opacity: 0.8, borderLeft: '4px solid var(--c-gold-500)', paddingLeft: '16px' }}>
                 Tes Verbal dirancang <strong>BUKAN</strong> untuk menguji seberapa cepat Anda membaca, melainkan seberapa akurat Anda menarik kesimpulan murni dari data tertulis tanpa membawa asumsi atau pengetahuan dari luar.
@@ -72,41 +78,41 @@ export default function GuidePage() {
                 Jangan pernah menggunakan pengetahuan umum Anda. Jika teks mengatakan "Langit berwarna hijau", maka untuk keperluan menjawab soal, langit adalah hijau.
               </div>
 
-              <h3 style={{ marginTop: 'var(--sp-xl)', marginBottom: 'var(--sp-sm)', color: 'var(--c-navy-800)' }}>2. Pahami 3 Opsi Jawaban dengan Tepat</h3>
-              
-              <div style={{ marginBottom: 'var(--sp-md)' }}>
-                <h4 style={{ color: 'var(--c-success)' }}>🟢 A. BENAR (True)</h4>
-                <p style={{ opacity: 0.8 }}>Pernyataan secara logis mengikuti informasi atau merupakan ringkasan akurat dari bagian teks.</p>
-                <ul style={{ paddingLeft: '20px', opacity: 0.8 }}>
-                  <li><strong>Ciri-ciri:</strong> Menggunakan parafrase dari kalimat di dalam teks.</li>
-                  <li><strong>Syarat Mutlak:</strong> Anda bisa menunjuk langsung dengan jari ke kalimat dalam teks yang membuktikan pernyataan tersebut 100% benar.</li>
-                </ul>
-              </div>
+              <div style={{ position: 'relative' }}>
+                <div style={{ opacity: 0.3, filter: 'blur(5px)', userSelect: 'none', pointerEvents: 'none' }}>
+                  <h3 style={{ marginTop: 'var(--sp-xl)', marginBottom: 'var(--sp-sm)', color: 'var(--c-navy-800)' }}>2. Pahami 3 Opsi Jawaban dengan Tepat</h3>
+                  
+                  <div style={{ marginBottom: 'var(--sp-md)' }}>
+                    <h4 style={{ color: 'var(--c-success)' }}>🟢 A. BENAR (True)</h4>
+                    <p style={{ opacity: 0.8 }}>Pernyataan secara logis mengikuti informasi atau merupakan ringkasan akurat dari bagian teks.</p>
+                  </div>
 
-              <div style={{ marginBottom: 'var(--sp-md)' }}>
-                <h4 style={{ color: 'var(--c-danger)' }}>🔴 B. SALAH (False)</h4>
-                <p style={{ opacity: 0.8 }}>Pernyataan secara mutlak bertentangan atau menyangkal informasi yang ada di dalam teks.</p>
-                <ul style={{ paddingLeft: '20px', opacity: 0.8 }}>
-                  <li><strong>Ciri-ciri:</strong> Teks bilang X naik, pernyataan bilang X turun.</li>
-                  <li><strong>Syarat Mutlak:</strong> Anda bisa menunjuk dengan jari ke kalimat dalam teks yang membuktikan bahwa pernyataan itu mustahil.</li>
-                </ul>
-              </div>
+                  <div style={{ marginBottom: 'var(--sp-md)' }}>
+                    <h4 style={{ color: 'var(--c-danger)' }}>🔴 B. SALAH (False)</h4>
+                    <p style={{ opacity: 0.8 }}>Pernyataan secara mutlak bertentangan atau menyangkal informasi yang ada di dalam teks.</p>
+                  </div>
+                  
+                  <div style={{ marginBottom: 'var(--sp-md)' }}>
+                    <h4 style={{ color: 'var(--c-warning)' }}>🟡 C. TIDAK DAPAT DITENTUKAN</h4>
+                    <p style={{ opacity: 0.8 }}>Tidak ada informasi yang cukup di dalam teks untuk memastikan secara pasti.</p>
+                  </div>
 
-              <div style={{ marginBottom: 'var(--sp-md)' }}>
-                <h4 style={{ color: 'var(--c-warning)' }}>🟡 C. TIDAK DAPAT DITENTUKAN (Cannot Say)</h4>
-                <p style={{ opacity: 0.8 }}>Tidak ada informasi yang cukup di dalam teks untuk memastikan secara pasti.</p>
-                <ul style={{ paddingLeft: '20px', opacity: 0.8 }}>
-                  <li><strong>Ciri-ciri:</strong> Pernyataan tersebut bisa jadi benar di dunia nyata, tetapi teks tidak pernah membahasnya.</li>
-                  <li><strong>Sering Muncul Sebagai:</strong> Asumsi, spekulasi masa depan, atau tebakan sebab-akibat.</li>
-                </ul>
+                  <h3 style={{ marginTop: 'var(--sp-xl)', marginBottom: 'var(--sp-sm)', color: 'var(--c-navy-800)' }}>3. Jebakan Umum (Common Traps)</h3>
+                  <ul style={{ paddingLeft: '20px', opacity: 0.8, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    <li><strong>Kata Kuantitas Absolut:</strong> Waspadai perubahan dari kata "Banyak" di teks, menjadi kata "Semua/Seluruh" di pernyataan soal.</li>
+                    <li><strong>Sebab-Akibat Buatan:</strong> Teks menyebutkan dua kejadian terjadi bersamaan, tapi soal menyebutkan kejadian A menyebabkan B. (Jawaban: Tidak Dapat Ditentukan).</li>
+                    <li><strong>Melompat ke Kesimpulan:</strong> "Menargetkan produksi" (di teks) tidak sama dengan "Akan memproduksi" (di soal). Target bisa meleset.</li>
+                  </ul>
+                </div>
+                
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent, white 40%)', display: 'flex', alignItems: 'center', justifyItems: 'center', justifyContent: 'center' }}>
+                  <div style={{ textAlign: 'center', background: 'white', padding: '24px', borderRadius: '16px', boxShadow: 'var(--shadow-md)', border: '1px solid var(--c-slate-200)', maxWidth: '80%', transform: 'translateY(50px)' }}>
+                    <div style={{ fontSize: '24px', marginBottom: '8px' }}>🔒</div>
+                    <h4 style={{ color: 'var(--c-navy-900)', marginBottom: '8px' }}>Buka Akses Penuh Segera Hadir</h4>
+                    <p style={{ fontSize: '0.875rem', opacity: 0.8, margin: 0 }}>Panduan strategi terlengkap untuk Verbal, Numerikal, dan Logika akan tersedia di versi rilis berikutnya.</p>
+                  </div>
+                </div>
               </div>
-
-              <h3 style={{ marginTop: 'var(--sp-xl)', marginBottom: 'var(--sp-sm)', color: 'var(--c-navy-800)' }}>3. Jebakan Umum (Common Traps)</h3>
-              <ul style={{ paddingLeft: '20px', opacity: 0.8, display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <li><strong>Kata Kuantitas Absolut:</strong> Waspadai perubahan dari kata "Banyak" di teks, menjadi kata "Semua/Seluruh" di pernyataan soal.</li>
-                <li><strong>Sebab-Akibat Buatan:</strong> Teks menyebutkan dua kejadian terjadi bersamaan, tapi soal menyebutkan kejadian A menyebabkan B. (Jawaban: Tidak Dapat Ditentukan).</li>
-                <li><strong>Melompat ke Kesimpulan:</strong> "Menargetkan produksi" (di teks) tidak sama dengan "Akan memproduksi" (di soal). Target bisa meleset.</li>
-              </ul>
             </div>
           )}
 

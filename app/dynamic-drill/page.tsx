@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
@@ -32,13 +32,13 @@ export default function DynamicDrillPage() {
   const [isProcessing, setIsProcessing] = useState(false);
 
   useEffect(() => {
-    if (sessionStatus === 'unauthenticated' || (sessionStatus === 'authenticated' && (session?.user as any)?.isPremium !== true)) {
+    if (sessionStatus === 'unauthenticated') {
       router.push('/pricing');
     }
   }, [sessionStatus, session, router]);
 
   if (sessionStatus === 'loading') return <div className="container flex-center" style={{ height: '100vh' }}><div className="dot-typing"></div></div>;
-  if (sessionStatus === 'unauthenticated' || (session?.user as any)?.isPremium !== true) {
+  if (sessionStatus === 'unauthenticated') {
     return null;
   }
 
@@ -157,8 +157,9 @@ export default function DynamicDrillPage() {
   };
 
   return (
-    <main style={{ padding: 'var(--sp-xl) 0', minHeight: 'calc(100vh - 72px)', background: 'var(--c-slate-100)' }}>
-      <div className="container" style={{ maxWidth: '800px' }}>
+    <main style={{ padding: 'var(--sp-xl) 0', minHeight: 'calc(100vh - 72px)', background: 'var(--c-slate-100)', position: 'relative', overflow: 'hidden' }}>
+      <img src="/bi-logo.svg" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 opacity-[0.03] pointer-events-none" alt="" />
+      <div className="container" style={{ maxWidth: '800px', position: 'relative', zIndex: 10 }}>
         
         <div className="flex-between" style={{ marginBottom: 'var(--sp-xl)' }}>
           <div>
@@ -302,7 +303,9 @@ export default function DynamicDrillPage() {
                 
                 <h3 style={{ color: 'var(--c-gold-500)', marginBottom: 'var(--sp-md)' }}>Pertanyaan</h3>
                 <div className="markdown-content" style={{ fontSize: '1.25rem', lineHeight: 1.6 }}>
-                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{drillState.question}</ReactMarkdown>
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {drillState.question.replace(/([A-E][.)])\s/g, '\n\n$1 ')}
+                  </ReactMarkdown>
                 </div>
 
                 <div style={{ display: 'flex', gap: '12px', marginTop: 'var(--sp-xl)' }}>
@@ -349,7 +352,9 @@ export default function DynamicDrillPage() {
           100% { box-shadow: 10px 0 0 0 var(--c-navy-900), 20px 0 0 0 var(--c-navy-900); }
         }
         /* Override Markdown p color inside dark card */
-        .markdown-content p { color: inherit; }
+        .markdown-content p { color: inherit; white-space: pre-wrap; margin-bottom: 0.75rem; }
+        .markdown-content ul, .markdown-content ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+        .markdown-content li { margin-bottom: 0.5rem; }
       `}</style>
     </main>
   );

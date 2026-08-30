@@ -86,13 +86,13 @@ export default function FGDPage() {
   };
 
   useEffect(() => {
-    if (sessionStatus === 'unauthenticated' || (sessionStatus === 'authenticated' && (session?.user as any)?.isPremium !== true)) {
+    if (sessionStatus === 'unauthenticated') {
       router.push('/pricing');
     }
   }, [sessionStatus, session, router]);
 
   if (sessionStatus === 'loading') return <div className="container flex-center" style={{ height: '100vh' }}><div className="dot-typing"></div></div>;
-  if (sessionStatus === 'unauthenticated' || (session?.user as any)?.isPremium !== true) {
+  if (sessionStatus === 'unauthenticated') {
     return null;
   }
 

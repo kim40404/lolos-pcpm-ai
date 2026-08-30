@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
@@ -17,13 +17,13 @@ export default function AICoachPage() {
   const [isTyping, setIsTyping] = useState(false);
 
   useEffect(() => {
-    if (sessionStatus === 'unauthenticated' || (sessionStatus === 'authenticated' && (session?.user as any)?.isPremium !== true)) {
+    if (sessionStatus === 'unauthenticated') {
       router.push('/pricing');
     }
   }, [sessionStatus, session, router]);
 
   if (sessionStatus === 'loading') return <div className="container flex-center" style={{ height: '100vh' }}><div className="dot-typing"></div></div>;
-  if (sessionStatus === 'unauthenticated' || (session?.user as any)?.isPremium !== true) {
+  if (sessionStatus === 'unauthenticated') {
     return null;
   }
 

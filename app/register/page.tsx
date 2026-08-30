@@ -26,7 +26,7 @@ export default function RegisterPage() {
         router.push('/login?registered=true');
       } else {
         const result = await response.json();
-        setError(result.error || 'Terjadi kesalahan');
+        setError(result.details || result.error || 'Terjadi kesalahan');
       }
     } catch (err) {
       setError('Gagal mendaftar. Silakan coba lagi.');

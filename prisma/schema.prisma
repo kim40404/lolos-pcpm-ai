@@ -43,10 +43,11 @@ model User {
   image         String?
   password      String?
   isPremium     Boolean   @default(false)
-  aiQuota       Int       @default(20)
+  aiQuota       Int       @default(10)
   accounts      Account[]
   sessions      Session[]
   drillResults  DrillResult[]
+  tryoutResults TryoutResult[]
 }
 
 model VerificationToken {
@@ -66,4 +67,26 @@ model DrillResult {
   createdAt   DateTime @default(now())
   
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model TryoutResult {
+  id          String   @id @default(cuid())
+  userId      String
+  tryoutId    String   // e.g., "TPD_8"
+  verbal      Int
+  numerikal   Int
+  digitSimbol Int
+  diagram     Int
+  timeSaved   Int      // Sisa waktu dalam detik
+  accuracy    Float
+  createdAt   DateTime @default(now())
+  
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Feedback {
+  id        String   @id @default(cuid())
+  message   String
+  email     String?
+  createdAt DateTime @default(now())
 }

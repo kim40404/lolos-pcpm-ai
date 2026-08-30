@@ -30,6 +30,6 @@ export async function POST(req: Request) {
 
     return NextResponse.json(user);
   } catch (error) {
-    return NextResponse.json({ error: "Registration failed" }, { status: 500 });
+    return NextResponse.json({ error: "Registration failed", details: error instanceof Error ? error.message : String(error) }, { status: 500 });
   }
 }
