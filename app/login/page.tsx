@@ -4,12 +4,14 @@ import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { Eye, EyeOff } from 'lucide-react';
 
 export default function LoginPage() {
   const router = useRouter();
   const [data, setData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const loginUser = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,13 +54,22 @@ export default function LoginPage() {
           </div>
           <div>
             <label style={{ display: 'block', marginBottom: '0.25rem', fontWeight: 600 }}>Password</label>
-            <input 
-              type="password" 
-              value={data.password} 
-              onChange={e => setData({...data, password: e.target.value})}
-              required
-              style={{ width: '100%', padding: '0.75rem', borderRadius: 'var(--radius-sm)', border: '1px solid #ccc' }}
-            />
+            <div style={{ position: 'relative' }}>
+              <input 
+                type={showPassword ? "text" : "password"} 
+                value={data.password} 
+                onChange={e => setData({...data, password: e.target.value})}
+                required
+                style={{ width: '100%', padding: '0.75rem', paddingRight: '2.5rem', borderRadius: 'var(--radius-sm)', border: '1px solid #ccc' }}
+              />
+              <button 
+                type="button" 
+                onClick={() => setShowPassword(!showPassword)}
+                style={{ position: 'absolute', right: '0.75rem', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: '#666' }}
+              >
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+            </div>
           </div>
           
           <button type="submit" className="btn btn-primary" disabled={loading} style={{ width: '100%', marginTop: 'var(--sp-sm)' }}>

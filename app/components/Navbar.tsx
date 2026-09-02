@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/react';
-import { LogOut, Star, Menu, X } from 'lucide-react';
+import { LogOut, Star, Menu, X, Flame } from 'lucide-react';
 import QuotaDisplay from './QuotaDisplay';
 import { motion } from 'framer-motion';
 
@@ -64,8 +64,10 @@ export default function Navbar() {
 
         {/* Navigation Links - Desktop */}
         <nav className="hidden xl:flex absolute left-1/2 -translate-x-1/2 flex-nowrap items-center justify-center gap-3 font-semibold text-[13px] w-auto">
-          <MagneticLink href="/tryouts" className="text-slate-300 hover:text-white transition-colors border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-white/20 whitespace-nowrap">
-            Tryout PCPM
+          <MagneticLink href="/tryouts" className="relative group text-white font-black transition-all border-2 border-yellow-400 bg-gradient-to-r from-orange-600/40 to-yellow-500/40 rounded-full px-5 py-2 hover:from-orange-500/60 hover:to-yellow-400/60 whitespace-nowrap flex items-center gap-2 overflow-hidden hover:scale-105 animate-fire-glow">
+            <span className="absolute inset-0 bg-gradient-to-r from-yellow-300/0 via-yellow-200/40 to-yellow-300/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out"></span>
+            <Flame className="w-5 h-5 text-yellow-300 fill-orange-500 animate-fire-flicker" />
+            <span className="bg-gradient-to-r from-yellow-200 to-orange-400 bg-clip-text text-transparent drop-shadow-md">Tryout PCPM</span>
           </MagneticLink>
           <MagneticLink href="/dynamic-drill" className="text-slate-300 hover:text-white transition-colors border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-white/20 whitespace-nowrap">
             AI Dynamic Drill
@@ -140,8 +142,8 @@ export default function Navbar() {
           animate={{ opacity: 1, y: 0 }}
           className="xl:hidden absolute top-full left-0 w-full bg-slate-950/95 backdrop-blur-xl border-b border-white/10 py-5 px-6 flex flex-col gap-4 font-semibold text-sm shadow-2xl z-50"
         >
-          <Link href="/tryouts" onClick={() => setIsMobileMenuOpen(false)} className="text-slate-300 hover:text-white transition-colors flex items-center justify-between border-b border-white/5 pb-3">
-            Tryout PCPM <span className="text-xs opacity-50">→</span>
+          <Link href="/tryouts" onClick={() => setIsMobileMenuOpen(false)} className="text-yellow-400 hover:text-yellow-300 transition-colors flex items-center justify-between pb-3 font-black bg-orange-900/20 px-4 py-2.5 rounded-lg border-2 border-orange-500/40 animate-fire-glow">
+            <span className="flex items-center gap-2"><Flame className="w-5 h-5 text-yellow-400 fill-orange-500 animate-fire-flicker" /> Tryout PCPM</span> <span className="text-xs opacity-50">→</span>
           </Link>
           <Link href="/dynamic-drill" onClick={() => setIsMobileMenuOpen(false)} className="text-slate-300 hover:text-white transition-colors flex items-center justify-between border-b border-white/5 pb-3">
             AI Dynamic Drill <span className="text-xs opacity-50">→</span>

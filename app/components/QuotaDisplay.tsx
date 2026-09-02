@@ -1,12 +1,16 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import { useSession } from 'next-auth/react';
 import { Zap } from 'lucide-react';
 
 export default function QuotaDisplay() {
+  const { data: session } = useSession();
   const [quota, setQuota] = useState<number | null>(null);
 
   useEffect(() => {
+    if (!session) return;
+
     const fetchQuota = async () => {
       try {
         const res = await fetch('/api/user/quota');
@@ -20,10 +24,10 @@ export default function QuotaDisplay() {
     };
     fetchQuota();
     
-    // Poll every 10 seconds to update quota if it changes in another tab
-    const interval = setInterval(fetchQuota, 10000);
+    // Poll every 30 seconds to update quota if it changes in another tab
+    const interval = setInterval(fetchQuota, 30000);
     return () => clearInterval(interval);
-  }, []);
+  }, [session]);
 
   if (quota === null) return null;
 

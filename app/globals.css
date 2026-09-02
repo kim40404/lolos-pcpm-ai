@@ -244,6 +244,56 @@ h3 { font-size: 1.75rem; }
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes fireGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(250, 204, 21, 0.4), 0 0 30px rgba(249, 115, 22, 0.2); }
+  50% { box-shadow: 0 0 25px rgba(250, 204, 21, 0.7), 0 0 50px rgba(249, 115, 22, 0.4), 0 0 80px rgba(249, 115, 22, 0.15); }
+}
+
+@keyframes fireFlicker {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  25% { transform: scale(1.15) rotate(-4deg); opacity: 0.9; }
+  50% { transform: scale(0.95) rotate(3deg); opacity: 1; }
+  75% { transform: scale(1.1) rotate(-2deg); opacity: 0.85; }
+}
+
+@keyframes noticeSlide {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes noticePulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(249, 115, 22, 0.3), inset 0 0 20px rgba(249, 115, 22, 0.05); }
+  50% { box-shadow: 0 0 40px rgba(250, 204, 21, 0.5), 0 0 80px rgba(249, 115, 22, 0.2), inset 0 0 30px rgba(249, 115, 22, 0.1); }
+}
+
+.animate-fire-glow {
+  animation: fireGlow 2s ease-in-out infinite;
+  will-change: box-shadow;
+}
+
+.animate-fire-flicker {
+  animation: fireFlicker 0.8s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-notice-bg {
+  background-size: 200% 200%;
+  animation: noticeSlide 4s ease-in-out infinite, noticePulse 3s ease-in-out infinite;
+  will-change: background-position, box-shadow;
+}
+
+/* Accessibility: respect user's reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fire-glow,
+  .animate-fire-flicker,
+  .animate-notice-bg,
+  .animate-fade-in,
+  .animate-pulse {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 .animate-fade-in {
   animation: fadeIn 0.6s ease-out forwards;
 }

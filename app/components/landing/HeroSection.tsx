@@ -86,8 +86,12 @@ export default function HeroSection({ session }: { session: any }) {
               className="relative z-10 h-32 md:h-40 w-auto object-contain bg-white rounded-[2rem] p-5 shadow-[0_0_40px_rgba(255,255,255,0.3)] border-2 border-white/40" 
             />
           </div>
-          <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-blue-500/10 border border-blue-500/30 backdrop-blur-md shadow-lg">
-            <span className="font-bold text-lg tracking-tight text-blue-100">✨ Platform Pelatihan <span className="text-white">Lolos</span><span className="text-[#F4D160]">PCPM</span> Terpadu</span>
+          <div className="inline-flex flex-col sm:flex-row items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-orange-700/30 via-yellow-600/20 to-orange-700/30 border-2 border-orange-500/50 backdrop-blur-md animate-notice-bg">
+            <span className="font-extrabold text-base md:text-lg tracking-tight text-white flex items-center gap-2">
+              🔥 <span className="text-orange-400">PENGUMUMAN PENTING:</span> Ujian TPD Sudah Sangat Dekat! 
+            </span>
+            <span className="hidden sm:block text-orange-500/50">•</span>
+            <span className="font-bold text-orange-200 text-sm md:text-base">Mulai Latihan Ekstra Sekarang!</span>
           </div>
         </div>
 
